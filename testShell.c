@@ -12,9 +12,12 @@
 #define clear() printf("\033[H\033[J")
 
 void init_shell(){
+    char *user;
+
     clear();
     printf("\n\n********** THIS IS A TEST SHELL **********\n\n");
-    char *user = getenv("USER");
+
+    user = getenv("USER");
     printf("\n USER: @%s\n", user);
     sleep(1);
     clear();
@@ -132,8 +135,8 @@ void print_man(){
 
 int execute_my_commands(char **commands){
     int i, switch_args = 0;
-    char *command_list[3];
-    char *user;
+    const char* command_list[3];
+    char* user;
     
     command_list[0] = "exit";
     command_list[1] = "cd";
