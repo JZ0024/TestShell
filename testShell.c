@@ -54,7 +54,7 @@ void execute(char **commands){
             exit(0);
 
         default:
-            Wait(NULL);
+            wait(NULL);
             break;
     }
 
@@ -151,7 +151,7 @@ int execute_my_commands(char **commands){
             exit(0);
     
         case 1:
-            chdir(parsed[1]);
+            chdir(commands[1]);
             return 1;
 
         case 2:
@@ -171,7 +171,7 @@ int execute_my_commands(char **commands){
 int parse_pipe(char *str, char** result){
     int i;
     
-    for(i = 0; i < 2, i++){
+    for(i = 0; i < 2; i++){
         result[i] = strsep(&str, "|");
     
         if(!result[i]){
@@ -186,7 +186,7 @@ void parse_space(char* str, char** result){
     int i;
 
     for(i = 0; i < MAXCOMS; i++){
-        parsed[i] = strsep(&str, " ");
+        result[i] = strsep(&str, " ");
         
         if(!result[i]){
             break;
@@ -228,7 +228,7 @@ int main(){
     while(1){
         print_dir();
 
-        if(get_input()){
+        if(get_input(input_str)){
             continue;
         }
 
